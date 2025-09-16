@@ -1,2 +1,2 @@
 # nodejs-otel_apiconsumobackend
-Exemplo de API REST criada com o Node.js e utilizando Distributed Tracing com OpenTelemetry (configurando porta do Collector) e consumindo uma API REST generica gratuita (Bacon Ipsum).
+Exemplo de API REST criada com o Node.js e implementando distributed tracing com OpenTelemetry (configurando porta do OpenTelemetry Collector + comunicacao via gRPC) e consumindo uma API REST generica gratuita (Bacon Ipsum).
