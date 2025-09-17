@@ -1,9 +1,11 @@
-// Para executar a aplicacao execute o seguinte comando
+// Para executar manualmente a aplicacao execute o seguinte comando
+// na raiz do projeto (onde esta o arquivo .env):
 // node --env-file=.env app.js
 
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
+const crypto = require('crypto');
 const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 
@@ -37,7 +39,16 @@ app.get('/mensagem-consumobackend', async (req, res) => {
     console.log('Payload retornado pela API de Testes:');
     console.log(response.data);
 
-    res.send(`Ola!!! A resposta foi: ${response.data}`);
+    const payload = {
+      id: crypto.randomUUID(),
+      mensagem: "Ola mundo - Node.js!",
+      retornoBackEnd: response.data
+    };
+
+    res.json(payload);
+
+    //res.send(`Ola!!! A resposta foi: ${response.data}`);
+
   } catch (error) {
     console.error('Erro ao chamar a API de Testes:', error.message);
     res.status(500).send('Erro ao chamar a API de Testes.');
