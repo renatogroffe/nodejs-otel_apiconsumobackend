@@ -46,9 +46,6 @@ app.get('/mensagem-consumobackend', async (req, res) => {
     };
 
     res.json(payload);
-
-    //res.send(`Ola!!! A resposta foi: ${response.data}`);
-
   } catch (error) {
     console.error('Erro ao chamar a API de Testes:', error.message);
     res.status(500).send('Erro ao chamar a API de Testes.');
